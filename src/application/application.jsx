@@ -3,7 +3,15 @@ import MyForm from './form/form';
 import ErrorBlock from './form/errorBlock';
 import { connect } from 'react-redux';
 
-class Application extends Component {
+function mapStateToProps(state) {
+    return {
+        hasErrors: state.hasErrors
+    };
+};
+
+
+@connect(mapStateToProps)
+export default class Application extends Component {
 
     onSubmit = (values) => {
 
@@ -21,11 +29,3 @@ class Application extends Component {
         );
     }
 }
-
-function mapStateToProps(state) {
-    return {
-        hasErrors: state.hasErrors
-    };
-};
-
-export default connect(mapStateToProps)(Application);
