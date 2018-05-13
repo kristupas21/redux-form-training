@@ -27,29 +27,25 @@ export default class MyForm extends Component {
             <form className='my-form' onSubmit={handleSubmit(validateSubmit)}>
                 <div className="form-row">
                     <label htmlFor="username">Enter user name: </label>
-                    <div className="form-field">
-                        <Field
-                            name="username"
-                            placeholder="User name"
-                            type="text"
-                            component={renderField}
-                            validate={[required, minLength2]}
-                            warn={alphaNumeric}
-                        />
-                    </div>
+                    <Field
+                        name="username"
+                        placeholder="User name"
+                        type="text"
+                        component={renderField}
+                        validate={[required, minLength2]}
+                        warn={alphaNumeric}
+                    />
                 </div>
                 <div className="form-row">
                     <label htmlFor="password">Enter password: </label>
-                    <div className="form-field">
-                        <Field
-                            name="password"
-                            placeholder="Password"
-                            type="password"
-                            component={renderField}
-                            validate={[required, minLength2]}
-                            warn={alphaNumeric}
-                        />
-                    </div>
+                    <Field
+                        name="password"
+                        placeholder="Password"
+                        type="password"
+                        component={renderField}
+                        validate={[required, minLength2]}
+                        warn={alphaNumeric}
+                    />
                 </div>
                 <div className="form-row">
                     <button className="form-button" type="submit">Submit</button>
