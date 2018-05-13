@@ -6,8 +6,15 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { storeError } from '../../actions';
 
+function matchDispatchToProps(dispatch) {
+    return bindActionCreators({
+        storeError
+    }, dispatch);
+};
 
-class MyForm extends Component {
+@reduxForm({ form: 'myForm' })
+@connect(null, matchDispatchToProps)
+export default class MyForm extends Component {
     componentWillReceiveProps(nextProps) {
         this.props.submitFailed !== nextProps.submitFailed
             && this.props.storeError(nextProps.submitFailed);
@@ -51,15 +58,3 @@ class MyForm extends Component {
         );
     }
 }
-
-MyForm = reduxForm({
-    form: 'myForm'
-})(MyForm);
-
-function matchDispatchToProps(dispatch) {
-    return bindActionCreators({
-        storeError
-    }, dispatch);
-};
-
-export default connect(null, matchDispatchToProps)(MyForm);
